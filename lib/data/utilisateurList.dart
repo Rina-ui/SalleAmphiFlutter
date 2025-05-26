@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
 import 'package:salleamphi/modal/user.dart';
 
 List<User> listUser = [
@@ -7,15 +10,17 @@ List<User> listUser = [
       post: 'Manager',
       numero: 92938764,
       email: 'john@gmail.com',
-      profil: ''
+      profil: '',
+      color: Colors.red
   ),
   User(
       id: 2,
-      nom: 'JOHN',
+      nom: 'QWERT',
       post: 'Manager',
       numero: 92938764,
       email: 'johngmail.com',
-      profil: ''
+      profil: '',
+      color: Colors.blue
   ),
   User(
       id: 3,
@@ -23,22 +28,25 @@ List<User> listUser = [
       post: 'Manager',
       numero: 92938764,
       email: 'john@gmail.com',
-      profil: ''
+      profil: '',
+      color: Colors.purpleAccent
   ),
   User(
       id: 4,
-      nom: 'JOHN',
+      nom: 'MONAGY',
       post: 'Manager',
       numero: 92938764,
       email: 'john@gmail.com',
-      profil: ''
+      profil: '',
+      color: Colors.black54
   ),
   User(
       id: 5,
-      nom: 'JOHN',
+      nom: 'XYRUS',
       post: 'Manager',
       numero: 92938764,
       email: 'john@gmail.com',
-      profil: ''
+      profil: '',
+      color: Colors.deepOrange
   )
 ];

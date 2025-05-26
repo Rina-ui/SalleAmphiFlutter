@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:remixicon/remixicon.dart';
 
+import '../data/utilisateurList.dart';
+import 'detail.dart';
+
 class Home extends StatelessWidget {
    const Home({super.key});
 
-  final List<Contact> contacts = const [
-    Contact('Alice', 'Engineer', Colors.blue),
-    Contact('Bob', 'Designer', Colors.green),
-    Contact('Charlie', 'Manager', Colors.orange),
-    Contact('Diana', 'Developer', Colors.purple),
-    Contact('Eve', 'Tester', Colors.red),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -59,32 +55,41 @@ class Home extends StatelessWidget {
                 separatorBuilder: (context, index) {
                   return Divider();
                 },
-                itemCount: contacts.length,
+                itemCount: listUser.length,
                 itemBuilder: (context, index) {
-                  final contact = contacts[index];
-                  return ListTile(
-                    leading: CircleAvatar(
-                      radius: 30,
-                      backgroundColor: contact.color,
-                      child: Text(
-                        contact.name[0],  // <-- affiche la 1ère lettre
-                        style: const TextStyle(color: Colors.white, fontSize: 20),
-                      ),
+
+                  return GestureDetector(
+                    child: ListTile(
+                            leading: CircleAvatar(
+                              radius: 30,
+                              backgroundColor: listUser[index].color,
+                              child: Text(
+                                  listUser[index].nom[0],
+                                  style: const TextStyle(color: Colors.white, fontSize: 20)
+                              )
+                            ),
+                            title: Text(listUser[index].nom, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, ),),
+                            subtitle: Text(listUser[index].post, style: TextStyle(fontSize: 10),),
+                            trailing: Row(
+                             mainAxisSize: MainAxisSize.min,
+                             children: [
+                               Icon(Icons.call),
+                               SizedBox(width: 10,),
+                               Icon(Icons.email),
+                             ],
+
+                             )
                     ),
-                    title: Text(
-                      contact.name,
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text(contact.role),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Icon(Icons.call),
-                        SizedBox(width: 10),
-                        Icon(Icons.message_outlined),
-                      ],
-                    ),
+
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Detail(user: listUser[index],)
+                          )
+                      );
+                    },
+
                   );
                 },
               ),
@@ -94,34 +99,12 @@ class Home extends StatelessWidget {
       ),
     );
 
-            // ListTile(
-            //   leading: CircleAvatar(radius: 30,),
-            //   title: Text('QWERT', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, ),),
-            //   subtitle: Text('Engineer', style: TextStyle(fontSize: 10),),
-            //   trailing: Row(
-            //     mainAxisSize: MainAxisSize.min,
-            //     children: [
-            //       Icon(Icons.call),
-            //       SizedBox(width: 10,),
-            //       Icon(Icons.email),
-            //     ],
-            //
-            //   )
-            // ),
-
-
   }
 }
 
-class Contact{
-  final String name;
-  final String role;
-  final Color color;
 
 
-  const Contact(this.name, this.role, this.color);
 
-}
 
 //scaffold joue le role d'une base pour mettre tout notre appli
 //le leading permet de mettre un element au debut
